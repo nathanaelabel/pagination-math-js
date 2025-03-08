@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate B</title>
+    <script>
+        function CalculateB(P, R) {
+            // RUMUS
+            // P = A + B       ---> Persamaan 1
+            // B = A x R       ---> Persamaan 2
+
+            // Persamaan Matematikanya adalah: 
+            // B = (P * R) / (1 + R) 
+            return (P * R) / (1 + R);
+        }
+
+        function JustOnClick() {
+            var P = parseFloat(document.getElementById("inputP").value);
+            var R = parseFloat(document.getElementById("inputR").value);
+
+            // Validasi input agar tidak terjadi error
+            if (isNaN(P) || isNaN(R)) {
+                alert("Please enter valid numbers for P and R.");
+                return;
+            }
+
+            var B = CalculateB(P, R);
+
+            // Menampilkan hasil ke dalam labelResult
+            document.getElementById("labelResult").innerText = B.toFixed(2);
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>P :</td>
+            <td><input id="inputP" type="number" value="1100" style="text-align:right; width: 80px;" /></td>
+        </tr>
+        <tr>
+            <td>R :</td>
+            <td><input id="inputR" type="number" value="0.1" step="0.01" style="text-align:right; width: 80px;" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="JustOnClick()">CALCULATE B</button></td>
+        </tr>
+        <tr>
+            <td colspan="2">B = <span id="labelResult">?</span></td>
+        </tr>
+    </table>
+</body>
+
+</html>
